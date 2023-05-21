@@ -1,52 +1,52 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-                    @if(Session::has('success'))
+<div class="container">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+                    <h2>Manage <b>Companies</b></h2>
+                    </div>
+                    <div class="col-sm-6">
+                    <a href="{{ route('new-company') }}" class="btn btn-success" data-toggle="modal"><span>Add New Company</span></a>   
+                    </div>
+                    </div>
+            </div>
+
+            @if(Session::has('success'))
                         <div class="alert alert-success">
                             {{ Session::get('success') }}
                         </div>
-                    @endif
-                    <div style="text-align: center; margin-bottom: 20px;">
-                    <a href="{{ route('new-company') }}" class="btn btn-primary">New Company</a>
-                    </div>
-                    <table class="table" style="text-align: center; vertical-align: middle;">
-                        <thead style="background-color: lightgray;">
-                            <tr>
-                            <th scope="col">Id</th>
-                            <th scope="col">Company name</th>
-                            <th scope="col">Tax number</th>
-                            <th scope="col">Details</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($companies as $company)
+            @endif
+
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Tax Number</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach ($companies as $company)
                                 <tr>
                                 <td>{{$company->id}}</td>
                                 <td>{{$company->name}}</td>
                                 <td>{{$company->taxnumber}}</td>
                                 <td><a class="btn btn-primary" href="{{ route('company-show',$company->id) }}">Show</a></td>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                        </table>
-                  
+                @endforeach
+
                         
-                
-                </div>
-            </div>
+                   
+                    
+                </tbody>
+            </table>
+
         </div>
     </div>
-</div>
+ 
 @endsection
