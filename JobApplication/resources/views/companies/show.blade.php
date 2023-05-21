@@ -14,7 +14,7 @@
                         </div>
                     @endif
                     <div style="text-align: center; margin:20px;">
-                    <a class="btn btn-primary" href="">Edit</a>
+                    <a class="btn btn-primary" href="{{ route('company-edit',$company->id) }}">Edit</a>
                             <form action="{{ route('company-delete',$company->id) }}" method="POST">
                             @csrf
                             @method('DELETE')

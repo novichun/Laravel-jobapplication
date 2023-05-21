@@ -41,4 +41,24 @@ class CompanyController extends Controller
         
         return redirect()->route('home')->with('success','Company has been deleted successfully.');
     }
+    
+    public function edit($id)
+    {
+        $company = Company::findOrFail($id);
+        return view("companies.edit", compact("company"));
+    }
+
+    public function update(Request $request,$id)
+    {
+        $request->validate([
+            'name' => 'required',
+            'taxnumber' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+        ]);
+      $company = Company::findOrFail($id);
+      $company->update($request->all());
+        
+      return redirect()->route('home')->with('success','Company has been updated successfully.');
+    }
 }
