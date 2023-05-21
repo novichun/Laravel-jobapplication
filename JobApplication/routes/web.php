@@ -21,3 +21,4 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('/new-company', [App\Http\Controllers\CompanyController::class, 'new'])->name('new-company')->middleware('auth');
 Route::post('/store-company', [App\Http\Controllers\CompanyController::class, 'store'])->name('store-company')->middleware('auth');
 Route::get('/company/{id}', [App\Http\Controllers\CompanyController::class, 'show'])->name('company-show')->middleware('auth');
+Route::delete('/company-delete/{id}', [App\Http\Controllers\CompanyController::class, 'delete'])->name('company-delete')->middleware('auth');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\Company;
+use Illuminate\Support\Facades\Session;
 
 class CompanyController extends Controller
 {
@@ -31,5 +32,13 @@ class CompanyController extends Controller
     {
         $company = Company::findOrFail($id);
         return view("companies.show", compact("company"));
+    }
+
+    public function delete($id)
+    {
+        $company = Company::findOrFail($id);
+        $company->delete();
+        
+        return redirect()->route('home')->with('success','Company has been deleted successfully.');
     }
 }

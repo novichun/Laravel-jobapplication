@@ -13,6 +13,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    @if(Session::has('success'))
+                        <div class="alert alert-success">
+                            {{ Session::get('success') }}
+                        </div>
+                    @endif
                     <div style="text-align: center; margin-bottom: 20px;">
                     <a href="{{ route('new-company') }}" class="btn btn-primary">New Company</a>
                     </div>
