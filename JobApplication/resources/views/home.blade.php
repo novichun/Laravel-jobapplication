@@ -13,10 +13,32 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <div style="text-align: center;">
+                    <div style="text-align: center; margin-bottom: 20px;">
                     <a href="{{ route('new-company') }}" class="btn btn-primary">New Company</a>
                     </div>
-                   
+                    <table class="table" style="text-align: center; vertical-align: middle;">
+                        <thead style="background-color: lightgray;">
+                            <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Company name</th>
+                            <th scope="col">Tax number</th>
+                            <th scope="col">Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($companies as $company)
+                                <tr>
+                                <td>{{$company->id}}</td>
+                                <td>{{$company->name}}</td>
+                                <td>{{$company->taxnumber}}</td>
+                                <td><a href="" class="btn btn-primary">Show</a></td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                        </table>
+                  
+                        
+                
                 </div>
             </div>
         </div>
