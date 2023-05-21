@@ -12,6 +12,7 @@ class CompanyController extends Controller
     {
         return view("companies.new");
     }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -24,5 +25,11 @@ class CompanyController extends Controller
         Company::create($request->post());
 
         return redirect()->route('home')->with('success','Company has been created successfully.');
+    }
+
+    public function show($id)
+    {
+        $company = Company::findOrFail($id);
+        return view("companies.show", compact("company"));
     }
 }
