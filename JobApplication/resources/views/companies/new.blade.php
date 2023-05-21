@@ -14,27 +14,27 @@
                         </div>
                     @endif
                     
-                    <form action="{{ route('store-company') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('store-company') }}" method="POST" enctype="multipart/form-data" ">
                     @csrf
-                    <div class="form-group row">
+                    <div class="form-group row" style="padding-bottom: 20px;">
                         <label for="name" class="col-4 col-form-label">Company name</label> 
                         <div class="col-8">
                         <input id="name" name="name" type="text" class="form-control">
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row" style="padding-bottom: 20px;">
                         <label for="taxnumber" class="col-4 col-form-label">Tax number</label> 
                         <div class="col-8">
                         <input id="taxnumber" name="taxnumber" type="text" class="form-control">
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row" style="padding-bottom: 20px;">
                         <label for="email" class="col-4 col-form-label">Email</label> 
                         <div class="col-8">
                         <input id="email" name="email" type="text" class="form-control">
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group row" style="padding-bottom: 20px;">
                         <label for="phone" class="col-4 col-form-label">Phone number</label> 
                         <div class="col-8">
                         <input id="phone" name="phone" type="text" class="form-control">
