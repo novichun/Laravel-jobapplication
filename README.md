@@ -21,6 +21,17 @@
 - Node 20.2.0
 - Composer 2.5.5
 - Laravel 10.11.0
+
+### Project deploy:
+- "composer install"
+- "npm install"
+- .env update with own settings
+- "php artisan key:generate"
+- "php artisan migrate"
+- "php artisan serve"
+- "npm run dev"
+
+
 ### User generator script:
 " php artisan generate:random-user "
 
