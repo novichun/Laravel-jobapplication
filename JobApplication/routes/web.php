@@ -16,6 +16,16 @@ use Illuminate\Support\Facades\Auth;
 
 Auth::routes();
 
+Route::middleware(['2fa'])->group(function () {
+   
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::post('/2fa', function () {
+        return redirect(route('home'));
+    })->name('2fa');
+});
+  
+Route::get('/complete-registration', [App\Http\Controllers\Auth\RegisterController::class, 'completeRegistration'])->name('complete.registration');
+
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/new-company', [App\Http\Controllers\CompanyController::class, 'new'])->name('new-company')->middleware('auth');
