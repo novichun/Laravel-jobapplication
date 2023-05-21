@@ -19,11 +19,11 @@ class GenerateRandomUser extends Command
         $user = new User();
         $user->name = $faker->name;
         $user->email = $faker->unique()->safeEmail;
-        $user->password = Hash::make($faker->password);
+        $user->password = Hash::make("Testpassword12");
         $user->save();
 
         $this->info('Generated User:');
         $this->info('Username: ' . $user->email);
-        $this->info('Password: ' . $faker->password);
+        $this->info('Password: Testpassword12');
     }
 }
