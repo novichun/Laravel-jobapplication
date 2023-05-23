@@ -35,27 +35,27 @@ class CompanyController extends Controller
         return redirect()->route('home')->with('success','Company has been created successfully.');
     }
 
-    public function show($id)
+    public function show(Company $company)
     {
-        $company = Company::findOrFail($id);
+   
         return view("companies.show", compact("company"));
     }
 
-    public function delete($id)
+    public function delete(Company $company)
     {
-        $company = Company::findOrFail($id);
+
         $company->delete();
         
         return redirect()->route('home')->with('success','Company has been deleted successfully.');
     }
     
-    public function edit($id)
+    public function edit(Company $company)
     {
-        $company = Company::findOrFail($id);
+
         return view("companies.edit", compact("company"));
     }
 
-    public function update(Request $request,$id)
+    public function update(Request $request, Company $company)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
@@ -70,7 +70,6 @@ class CompanyController extends Controller
                 ->withInput();
         }
 
-      $company = Company::findOrFail($id);
       $company->update($request->all());
         
       return redirect()->route('home')->with('success','Company has been updated successfully.');
