@@ -14,7 +14,9 @@
                     <form action="{{ route('company-delete',$company->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button href="" type="submit" class="btn btn-danger" data-toggle="modal"><span>Delete</span></button>  
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this company?');">
+                            <span>Delete</span>
+                            </button>
                             </form> 
                             <a href="{{ route('company-edit',$company->id) }}" class="btn btn-success" data-toggle="modal"><span>Edit Company</span></a>  
                     </div>
