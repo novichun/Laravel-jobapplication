@@ -14,7 +14,7 @@
                         </div>
                     @endif
                     
-                    <form action="{{ route('store-company') }}" method="POST" enctype="multipart/form-data" ">
+                    <form action="{{ route('store-company') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     @if ($errors->any())

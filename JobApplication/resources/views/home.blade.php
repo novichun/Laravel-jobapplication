@@ -43,7 +43,7 @@
                                 <td>{{$company->id}}</td>
                                 <td>{{$company->name}}</td>
                                 <td>{{$company->taxnumber}}</td>
-                                <td><a class="btn btn-primary" href="{{ route('company-show',$company->id) }}">Show</a></td>
+                                <td><a class="btn btn-primary" href="{{ route('company-show', ['company' => $company]) }}">Show</a></td>
                                 </tr>
                 @endforeach
 

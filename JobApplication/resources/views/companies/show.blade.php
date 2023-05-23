@@ -11,7 +11,7 @@
                     </div>
                     <div class="col-sm-6">
                 
-                    <form action="{{ route('company-delete',$company->id) }}" method="POST">
+                    <form action="{{ route('company-delete', ['company' => $company]) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this company?');">
