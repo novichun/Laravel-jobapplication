@@ -16,14 +16,18 @@ class GenerateRandomUser extends Command
     {
         $faker = Faker::create();
 
-        $user = new User();
-        $user->name = $faker->name;
-        $user->email = $faker->unique()->safeEmail;
-        $user->password = Hash::make("Testpassword12");
-        $user->save();
+        $name = $faker->name;
+        $email = $faker->unique()->safeEmail;
+        $password = $faker->password(8);
+
+        $user = User::create([
+            'name' => $name,
+            'email' => $email,
+            'password' => Hash::make($password),
+        ]);
 
         $this->info('Generated User:');
         $this->info('Username: ' . $user->email);
-        $this->info('Password: Testpassword12');
+        $this->info('Password: ' . $password);
     }
 }
