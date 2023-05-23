@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\Company;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class CompanyController extends Controller
 {
@@ -16,12 +17,18 @@ class CompanyController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'taxnumber' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'taxnumber' => 'required|numeric|digits_between:1,20',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|numeric|digits_between:1,20',
         ]);
+    
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
         
         Company::create($request->post());
 
@@ -50,12 +57,19 @@ class CompanyController extends Controller
 
     public function update(Request $request,$id)
     {
-        $request->validate([
-            'name' => 'required',
-            'taxnumber' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'taxnumber' => 'required|numeric|digits_between:1,20',
+            'email' => 'required|email|max:255',
+            'phone' => 'required|numeric|digits_between:1,20',
         ]);
+    
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
       $company = Company::findOrFail($id);
       $company->update($request->all());
         

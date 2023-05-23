@@ -17,6 +17,18 @@
                     <form action="{{ route('edit-company',$company->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
+
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
+
                     <div class="form-group row" style="padding-bottom: 20px;">
                         <label for="name" class="col-4 col-form-label">Company name</label> 
                         <div class="col-8">
