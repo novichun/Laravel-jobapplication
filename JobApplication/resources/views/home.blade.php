@@ -21,6 +21,13 @@
                         </div>
             @endif
 
+            @if(Session::has('error'))
+                        <div class="alert alert-error">
+                            {{ Session::get('error') }}
+                        </div>
+            @endif
+
+
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>

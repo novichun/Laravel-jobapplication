@@ -24,7 +24,11 @@ class HomeController extends Controller
      */
     public function index()
     {
+        try {
         $companies = Company::all();
         return view('home', compact("companies"));
+    } catch (\Exception $e) {
+        return redirect()->route('home')->with('error', 'An error occurred while retrieving the company details for editing: '.$e->getMessage());
+    }
     }
 }
